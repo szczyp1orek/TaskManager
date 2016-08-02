@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using TaskManager.Models;
 
 namespace TaskManager
 {
@@ -12,6 +14,8 @@ namespace TaskManager
     {
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer<TaskManagerEntities>(new TaskManager.Models.SampleData());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
