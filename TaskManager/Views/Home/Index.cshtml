@@ -43,8 +43,10 @@
                     <td>
                         <div class="form-group">
                             @Html.HiddenFor(m => m[i].Description)
+                            
+                            @Html.HiddenFor(m => m[i].Employee.EmployeeId)
                             @Html.DisplayFor(m => m[i].Employee.Name)
-                            @Html.HiddenFor(m => m[i].Employee)
+                            
                         </div>
                     </td>
 
@@ -52,7 +54,7 @@
                     <td>
                         <div class="form-group">
                             @Html.DisplayFor(m => m[i].Date.Date)
-                            @Html.HiddenFor(m => m[i].Date.Date)
+                            @Html.HiddenFor(m => m[i].Date)
                         </div>
                     </td>
                     <td>

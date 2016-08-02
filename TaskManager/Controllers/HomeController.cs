@@ -10,8 +10,6 @@ namespace TaskManager.Controllers
 {
     public class HomeController : Controller
     {
-        
-
         public ActionResult Index()
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
