@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>MTask</h4>
+        <h4>Task</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.MTaskId)
@@ -56,7 +56,7 @@
             <div class="col-md-10">
                 <div class="editor-field">
                     @Html.DropDownList("EmployeeId", string.Empty)
-                    @Html.ValidationMessageFor(model => model.Employee, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

@@ -10,5 +10,6 @@ namespace TaskManager
         {
             ConfigureAuth(app);
         }
+
     }
 }

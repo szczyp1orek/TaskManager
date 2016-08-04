@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,17 +14,17 @@ namespace TaskManager.Controllers
         public ActionResult Index()
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
-            //var tEdit = new MTasksEdit();
             var tasks = taskDB.MTasks.Where(t => t.IsDone == false).ToList();
-            //tEdit.tasksEdit = tasks;
+            
             return View(tasks);
         }
-        ///
-        [HttpPost]
+            [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(List<MTask> tasks)
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
-            
+            //var oldTasks = taskDB.MTasks.Where(t => t.IsDone == false);
+
             if (ModelState.IsValid)
             {
                 foreach (var item in tasks)
@@ -33,7 +34,6 @@ namespace TaskManager.Controllers
                 taskDB.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             tasks = taskDB.MTasks.Where(t => t.IsDone == false).ToList();
             return View(tasks);
         }
@@ -47,7 +47,7 @@ namespace TaskManager.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "lilek8@gmail.com";
+            ViewBag.Message = "wiluszkamil1@gmail.com";
 
             return View();
         }

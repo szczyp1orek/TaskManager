@@ -18,16 +18,16 @@ namespace TaskManager.Models
             };
             var employees = new List<Employee>
             {
-                new Employee{Name="Kamil Lilek", Manager=managers.Single(m=>m.Name.Contains("Jon Snow")) },
-                new Employee{Name="Aga Sraga" ,  Manager=managers.Single(m=>m.Name.Contains("Jon Snow")) },
+                new Employee{Name="Kamil Szcz", Manager=managers.Single(m=>m.Name.Contains("Jon Snow")) },
+                new Employee{Name="Aga Nowak" ,  Manager=managers.Single(m=>m.Name.Contains("Jon Snow")) },
                 new Employee{Name="Lord Varys" ,  Manager=managers.Single(m=>m.Name.Contains("Deanearys Targaryen")) },
                 new Employee{Name="Tyrion Lennister" ,  Manager=managers.Single(m=>m.Name.Contains("Deanearys Targaryen")) },
             };
             var mtasks = new List<MTask>
             {
-                new MTask{Name="Frontier Report", Description="just do it", Employee=employees.Single(m=>m.Name=="Kamil Lilek"), Date=new DateTime(2016,7,20), IsDone=false },
-                new MTask{Name="EEC rates", Description="EEC rates upload", Employee=employees.Single(m=>m.Name=="Kamil Lilek"),Date=new DateTime(2016,7,20), IsDone=true },
-                new MTask{Name="IBS-TOLAS recon", Description="compares balances on IBS and TOLAS accounts", Employee=employees.Single(m=>m.Name=="Aga Sraga"),Date=new DateTime(2016,7,20), IsDone=false }
+                new MTask{Name="Frontier Report", Description="just do it", Employee=employees.Single(m=>m.Name=="Kamil Szcz"), Date=new DateTime(2016,7,20), IsDone=false },
+                new MTask{Name="EEC rates", Description="EEC rates upload", Employee=employees.Single(m=>m.Name=="Kamil Szcz"),Date=new DateTime(2016,7,20), IsDone=true },
+                new MTask{Name="IBS-TOLAS recon", Description="compares balances on IBS and TOLAS accounts", Employee=employees.Single(m=>m.Name=="Aga Nowak"),Date=new DateTime(2016,7,20), IsDone=false }
             };
             foreach (var item in managers)
             {
