@@ -8,8 +8,10 @@ using TaskManager.Models;
 
 namespace TaskManager.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TaskController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
@@ -19,20 +21,21 @@ namespace TaskManager.Controllers
         }
         
         // GET: Task
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
             var task = taskDB.MTasks.Find(id);         
             return View(task);
         }
-        //[Authorize(Roles = "Admin")] 
+        
         public ActionResult Create()
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
             ViewBag.EmployeeId = new SelectList(taskDB.Employees,"EmployeeId","Name");
             return View();
         }
-        //[Authorize(Roles = "Admin")] 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(MTask task)
@@ -47,7 +50,7 @@ namespace TaskManager.Controllers
             ViewBag.EmployeeId = new SelectList(taskDB.Employees, "EmployeeId", "Surname");
             return View(task);
         }
-        //[Authorize(Roles = "Admin")]
+        
         
         public ActionResult Edit(int id)
         {
@@ -56,7 +59,7 @@ namespace TaskManager.Controllers
             ViewBag.EmployeeId = new SelectList(taskDB.Employees, "EmployeeId", "Name");
             return View(task);
         }
-        //[Authorize(Roles = "Admin")] 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(MTask task)
@@ -71,14 +74,14 @@ namespace TaskManager.Controllers
             ViewBag.EmployeeId = new SelectList(taskDB.Employees, "EmployeeId", "Name");
             return View(task);
         }
-        //[Authorize(Roles = "Admin")]
+        
         public ActionResult Delete(int id)
         {
             TaskManagerEntities taskDB = new TaskManagerEntities();
             var taskToRemove = taskDB.MTasks.Find(id);
             return View(taskToRemove);
         }
-        //[Authorize(Roles = "Admin")]
+        
         [ValidateAntiForgeryToken]
         [HttpPost,ActionName("Delete")]
         public ActionResult DeleteConfirm(int id)

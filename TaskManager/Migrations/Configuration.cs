@@ -12,8 +12,19 @@ namespace TaskManager.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "TaskManager.Models.ApplicationDbContext";
+            //
+            var dbMigrator = new DbMigrator(this);
+
+            // This is required to detect changes.
+            var pendingMigrationsExist = dbMigrator.GetPendingMigrations().Any();
+
+            if (pendingMigrationsExist)
+            {
+                dbMigrator.Update();
+            }
+            //
         }
 
         protected override void Seed(TaskManager.Models.ApplicationDbContext context)
@@ -39,7 +50,7 @@ namespace TaskManager.Migrations
                 manager.Create(role);
                 //
                 context.Roles.Add(role);
-                context.SaveChanges();
+                
             }
 
             if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
@@ -48,12 +59,21 @@ namespace TaskManager.Migrations
                 var manager = new ApplicationUserManager(store);
                 var user = new ApplicationUser { UserName = "admin@admin.com", Email= "admin@admin.com" };
 
-                manager.Create(user, "Password123!");
+                IdentityResult result=manager.Create(user, "Password123!");
+                if (result.Succeeded == false) { throw new Exception(result.Errors.First()); }
                 manager.AddToRole(user.Id, "Admin");
-                context.SaveChanges();
-
-
+                
             }
+            else
+            {
+                // Just for good measure, this adds the user to the role if they already
+                // existed and just weren't in the role.
+                var user = context.Users.Single(u => u.UserName.Equals("admin@admin.com", StringComparison.CurrentCultureIgnoreCase));
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                manager.AddToRole(user.Id, "Admin");
+            }
+            context.SaveChanges();
         }
     }
 }

@@ -19,6 +19,4 @@ namespace TaskManager.Models
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
-
-    
 }
