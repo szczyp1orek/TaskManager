@@ -16,9 +16,9 @@ namespace TaskManager.Controllers
             TaskManagerEntities taskDB = new TaskManagerEntities();
             var tasks = taskDB.MTasks.Where(t => t.IsDone == false).ToList();
             
-            return View(tasks);
+            return View("Index",tasks);
         }
-            [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(List<MTask> tasks)
         {

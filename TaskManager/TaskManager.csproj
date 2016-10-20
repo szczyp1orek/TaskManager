@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MTasksController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -284,6 +285,10 @@
     <Content Include="Views\Task\Delete.cshtml" />
     <Content Include="Views\Task\Create.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\MTasks\Create.cshtml" />
+    <Content Include="Views\MTasks\Delete.cshtml" />
+    <Content Include="Views\MTasks\Details.cshtml" />
+    <Content Include="Views\MTasks\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

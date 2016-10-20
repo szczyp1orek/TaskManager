@@ -7,70 +7,71 @@
 <h2>Open Tasks</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create","Task")
+    @Html.ActionLink("Create New", "Create", "Task")
 </p>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model[0].Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model[0].Employee.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model[0].Date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model[0].IsDone)
-                </th>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>  @Html.DisplayNameFor(model => model[0].Name)  </h3>
+            </div>
+            <div class="col-md-3">
+                <h3>  @Html.DisplayNameFor(model => model[0].Employee.Name)  </h3>
+            </div>
+            <div class="col-md-2">
+                <h3>  @Html.DisplayNameFor(model => model[0].Date)  </h3>
+            </div>
+            <div class="col-md-2">
+                <h3>  @Html.DisplayNameFor(model => model[0].IsDone)  </h3>
+            </div>
+            <div class="col-md-2">
+                <h3>  Edit  </h3>
+            </div>
 
-            </tr>
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                <tr>
-                    @Html.HiddenFor(m => m[i].MTaskId)
+        </div>
+            
+        @for (int i = 0; i < Model.Count; i++)
+                {
+            
+            
+                @Html.HiddenFor(m => m[i].MTaskId)
 
-                    <td>
-                        <div class="form-group">
-                            @Html.DisplayFor(m => m[i].Name)
-                            @Html.HiddenFor(m => m[i].Name)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            @Html.HiddenFor(m => m[i].Description)
-                            
-                            @Html.HiddenFor(m => m[i].EmployeeId)
-                            @Html.DisplayFor(m => m[i].Employee.Name)
-                        </div>
-                    </td>
+                <div class="row">
 
-                    <td>
-                        <div class="form-group">
-                            @Html.DisplayFor(m => m[i].Date)
-                            @Html.HiddenFor(m => m[i].Date)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            @Html.EditorFor(m => m[i].IsDone)
-                            @Html.ValidationMessageFor(m => m[i].IsDone, "", new { @class = "text-danger" })
-                        </div>
-                    </td>
-                    <td>
+                    <div class="col-md-3">
+                       
+                        @Html.DisplayFor(m => m[i].Name)
+                        @Html.HiddenFor(m => m[i].Name)
+
+                    </div>
+                    <div class="col-md-3">
+                        
+                        @Html.DisplayFor(m => m[i].Employee.Name)
+                        @Html.HiddenFor(m => m[i].EmployeeId)
+                    </div>
+                    <div class="col-md-2">
+                        
+                        @Html.DisplayFor(m => m[i].Date)
+                        @Html.HiddenFor(m => m[i].Date)
+                    </div>
+                    <div class="col-md-2">
+                      
+                        @Html.EditorFor(m => m[i].IsDone)
+                        @Html.ValidationMessageFor(m => m[i].IsDone, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2">
+                       
                         @Html.ActionLink("Details", "Details", "Task", new { id = Model[i].MTaskId }, new object())
+                    </div>
+                </div>
+            
 
-                    </td>
-                </tr>
-            }
-        </table>
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Update" class="btn btn-default" />
-                </div>  
+        } 
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Update" class="btn btn-default" />
     </div>
 }
 

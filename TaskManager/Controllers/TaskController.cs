@@ -8,7 +8,7 @@ using TaskManager.Models;
 
 namespace TaskManager.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")] 
     public class TaskController : Controller
     {
         [AllowAnonymous]
@@ -17,7 +17,7 @@ namespace TaskManager.Controllers
             TaskManagerEntities taskDB = new TaskManagerEntities();
             var tasks = taskDB.MTasks.ToList();
 
-            return View(tasks);
+            return View("Index",tasks);
         }
         
         // GET: Task
@@ -93,6 +93,5 @@ namespace TaskManager.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
     }
 }

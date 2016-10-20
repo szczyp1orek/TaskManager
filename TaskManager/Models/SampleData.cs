@@ -14,14 +14,14 @@ namespace TaskManager.Models
             var managers = new List<Manager>
             {
                 new Manager{Name="Jon Snow" },
-                new Manager{Name="Deanearys Targaryen" }
+                new Manager{Name="Daenerys Targaryen" }
             };
             var employees = new List<Employee>
             {
                 new Employee{Name="Kamil Szcz", Manager=managers.Single(m=>m.Name.Contains("Jon Snow")) },
                 new Employee{Name="Aga Nowak" ,  Manager=managers.Single(m=>m.Name.Contains("Jon Snow")) },
-                new Employee{Name="Lord Varys" ,  Manager=managers.Single(m=>m.Name.Contains("Deanearys Targaryen")) },
-                new Employee{Name="Tyrion Lennister" ,  Manager=managers.Single(m=>m.Name.Contains("Deanearys Targaryen")) },
+                new Employee{Name="Lord Varys" ,  Manager=managers.Single(m=>m.Name.Contains("Daenerys Targaryen")) },
+                new Employee{Name="Tyrion Lennister" ,  Manager=managers.Single(m=>m.Name.Contains("Daenerys Targaryen")) },
             };
             var mtasks = new List<MTask>
             {

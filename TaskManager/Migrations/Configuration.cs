@@ -73,7 +73,7 @@ namespace TaskManager.Migrations
                 var manager = new UserManager<ApplicationUser>(store);
                 manager.AddToRole(user.Id, "Admin");
             }
-            context.SaveChanges();
+            //context.SaveChanges();
         }
     }
 }
